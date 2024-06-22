@@ -5,7 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import CodeMirror, { lineNumbers } from '@uiw/react-codemirror';
 import { StreamLanguage } from '@codemirror/language';
 import { verilog } from '@codemirror/legacy-modes/mode/verilog';
-import { vscode } from '@uiw/codemirror-theme-vscode'
+import { vscodeDark } from '@uiw/codemirror-theme-vscode'
 
 const user = {
   name: 'Tom Cook',
@@ -43,7 +43,7 @@ const page = () => {
         <body class="h-full">
         ```
       */}
-      <div className="min-h-full">
+      <div className="min-h-fit">
         {/* <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
             <div>
@@ -202,23 +202,39 @@ const page = () => {
         </header> */}
 
           {/*page degine*/ }
-        <main className='h-96 '>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 h-full relative">
-            <textarea name="code_area" id="editor" className='rounded border-solid border-2 border-black w-1/2 max-h-80 absolute inset-y-0 left-0 px-2 py-px mt-2'>
-              </textarea> 
-            <CodeMirror  className='rounded border-solid border-2 shadow w-1/2 max-h-80 absolute inset-y-0 right-0 px-2 py-px mt-2'
+        <main className='min-h-screen '>
+          <div className=" mx-1 py-6 sm:px-6 lg:px-8  relative">
+            <div name="question_area" className='rounded border-solid border-2 border-black w-1/2 min-h-screen overflow-y-scroll  absolute inset-y-0 left-0 px-2 py-px my-2'>
+       
+            </div > 
+            
+            
+            <div className='rounded border-solid shadow  min-h-screen overflow-y-scroll w-1/2 max-h-80 absolute inset-y-0 right-0 px-2 py-px mt-2 mx-1'>
+            <div>
+            <CodeMirror  className='rounded overflow-auto'
             value={code} 
             options={{}}
-            height="310px" 
+            height='575px'
             extensions={[StreamLanguage.define(verilog)]}
-            theme={vscode}
+            theme={vscodeDark}
             onChange={(value, viewUpdate) => {
              setcode(value);
-            }}
+            }} 
             />
-            <button className='rounded bg-green-400  h-9 w-20 absolute bottom-3 right-4 '> submit</button>
-            {/* Your content */}</div>
-        </main>
+            <div className='flex justify-end'>
+            <button className=' rounded text-white font-semibold bg-indigo-700 h-9 w-28 my-2'>submit</button>
+            </div>
+              
+            </div>
+
+            <div className='rounded border-solid border-2 border-black min-h-96 '></div>
+
+            </div>
+            
+          </div>
+            
+            
+          </main>
       
       </div>
     </>
